@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://vy8n1sop6tg5"]
+
+[ext_resource type="Script" uid="uid://caygu1r7kyvva" path="res://Scripts/jugador.gd" id="1_43k7d"]
+[ext_resource type="PackedScene" uid="uid://b7d5ww7vfvh2u" path="res://Scenes/Bala.tscn" id="2_pfvk3"]
+[ext_resource type="Texture2D" uid="uid://cxvilrkhskb18" path="res://icon.svg" id="3_ucnt4"]
+
+[node name="Jugador" type="Area2D"]
+script = ExtResource("1_43k7d")
+escena_bala = ExtResource("2_pfvk3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(64, 64)
+texture = ExtResource("3_ucnt4")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+color = Color(0, 0.90403146, 0.9040313, 1)
+polygon = PackedVector2Array(0, 54, 39, 0, 81, 54)
+uv = PackedVector2Array(-278, 54, -205, -53, -133, 68)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 54, 39, 0, 81, 54)
+
+[node name="Cañon" type="Marker2D" parent="."]
+position = Vector2(39, 0)
