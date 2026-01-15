@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Top-Down Shooter"
-run/main_scene="uid://bfrcro2vn40y"
+run/main_scene="res://Scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.5", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://Assets/icon.svg"
+
+[autoload]
+
+GameManager="*res://Scripts/GameManager.gd"
 
 [display]
 

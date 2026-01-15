@@ -7,6 +7,13 @@ var tamano_pantalla
 
 func _ready():
 	tamano_pantalla = get_viewport_rect().size
+	add_to_group("jugador") # Aseguramos que esté en el grupo para el jefe
+	
+	# Conectar señal de Game Over para cambiar de escena
+	GameManager.game_over.connect(_on_game_over)
+
+func _on_game_over():
+	get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
 
 func _process(delta):
 	# Movimiento
@@ -26,3 +33,17 @@ func disparar():
 		var bala = escena_bala.instantiate()
 		bala.position = $Cañon.global_position
 		get_parent().add_child(bala) # Añadimos la bala al mundo, no al jugador
+		
+func _on_area_entered(area):
+	if area.is_in_group("balas_jefe"):
+		GameManager.lose_life()         # Restamos vida global
+		area.queue_free()
+		
+		if GameManager.lives <= 0:
+			queue_free()
+	
+	elif area.is_in_group("enemigos"):
+		GameManager.lose_life()    
+		if GameManager.lives <= 0:
+			queue_free()     # Restamos vida global
+	

@@ -1,12 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfrcro2vn40y"]
+[gd_scene load_steps=7 format=3 uid="uid://bfrcro2vn40y"]
 
 [ext_resource type="PackedScene" uid="uid://vy8n1sop6tg5" path="res://Scenes/Jugador.tscn" id="1_pe05s"]
-[ext_resource type="Script" path="res://Scripts/Mundo.gd" id="1_ubi47"]
-[ext_resource type="PackedScene" uid="uid://bwt65nhtvyxnu" path="res://Scenes/Enemigo.tscn" id="2_xywc0"]
+[ext_resource type="Script" uid="uid://elay56avgmta" path="res://Scripts/Mundo.gd" id="1_ubi47"]
+[ext_resource type="PackedScene" uid="uid://bwt65nhtvyxnu" path="res://Scenes/Enemigo 01.tscn" id="2_xywc0"]
+[ext_resource type="PackedScene" uid="uid://7qmwgp0msjin" path="res://Scenes/Jefe.tscn" id="3_v2lyq"]
+[ext_resource type="PackedScene" uid="uid://fwrpj82rbhll" path="res://Scenes/Enemigo 02.tscn" id="3_yag4v"]
+[ext_resource type="PackedScene" path="res://Scenes/HUD.tscn" id="4_hud"]
 
 [node name="Mundo" type="Node2D"]
 script = ExtResource("1_ubi47")
-escena_enemigo = ExtResource("2_xywc0")
+escenas_enemigos = Array[PackedScene]([ExtResource("2_xywc0"), ExtResource("3_yag4v")])
+escena_jefe = ExtResource("3_v2lyq")
+escena_hud = ExtResource("4_hud")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(270, 0)
@@ -16,7 +21,6 @@ emission_shape = 3
 emission_rect_extents = Vector2(270, 1)
 scale_amount_min = 3.0
 scale_amount_max = 3.0
-color = Color(0.3375016, 0.55616844, 1, 1)
 
 [node name="TimerEnemigos" type="Timer" parent="."]
 autostart = true

@@ -1,9 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://bwt65nhtvyxnu"]
 
-[ext_resource type="Script" uid="uid://bqnq7gimmp17a" path="res://Scripts/enemigo.gd" id="1_usilb"]
+[ext_resource type="Script" uid="uid://bqnq7gimmp17a" path="res://Scripts/Enemigo.gd" id="1_usilb"]
 
 [node name="Enemigo" type="Area2D" groups=["enemigos"]]
 script = ExtResource("1_usilb")
+salud = 2
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(0, 1, 0, 71, 54, 71, 54, 1)
@@ -12,5 +13,19 @@ polygon = PackedVector2Array(0, 1, 0, 71, 54, 71, 54, 1)
 polygon = PackedVector2Array(0, 1, 54, 1, 54, 71, 0, 71)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(27.628704, 36.051487)
+rotation = 1.5710502
+scale = Vector2(0.048367694, 0.068182915)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -11.0
+offset_top = -12.0
+offset_right = 67.0
+offset_bottom = -2.0
+value = 100.0
+show_percentage = false
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
