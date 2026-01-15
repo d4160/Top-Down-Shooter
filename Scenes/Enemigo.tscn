@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bwt65nhtvyxnu"]
 
-[ext_resource type="Script" uid="uid://bi5pjig2nqu7i" path="res://Scripts/enemigo.gd" id="1_usilb"]
+[ext_resource type="Script" uid="uid://bqnq7gimmp17a" path="res://Scripts/enemigo.gd" id="1_usilb"]
 
 [node name="Enemigo" type="Area2D" groups=["enemigos"]]
 script = ExtResource("1_usilb")
@@ -12,3 +12,5 @@ polygon = PackedVector2Array(0, 1, 0, 71, 54, 71, 54, 1)
 polygon = PackedVector2Array(0, 1, 54, 1, 54, 71, 0, 71)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

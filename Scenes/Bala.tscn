@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7d5ww7vfvh2u"]
 
-[ext_resource type="Script" uid="uid://bxbl0q5mhl1x5" path="res://Scripts/Bala.gd" id="1_pu3jq"]
+[ext_resource type="Script" uid="uid://bhddprp6lvivs" path="res://Scripts/Bala.gd" id="1_pu3jq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pu3jq"]
 size = Vector2(4, 12)
 
-[node name="Area2D" type="Area2D"]
+[node name="Area2D" type="Area2D" groups=["balas"]]
 script = ExtResource("1_pu3jq")
 
 [node name="ColorRect" type="ColorRect" parent="."]

@@ -4,16 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://b7d5ww7vfvh2u" path="res://Scenes/Bala.tscn" id="2_pfvk3"]
 [ext_resource type="Texture2D" uid="uid://cxvilrkhskb18" path="res://icon.svg" id="3_ucnt4"]
 
-[node name="Jugador" type="Area2D"]
+[node name="Jugador" type="Area2D" groups=["jugador"]]
 script = ExtResource("1_43k7d")
 escena_bala = ExtResource("2_pfvk3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(64, 64)
 texture = ExtResource("3_ucnt4")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-visible = false
 color = Color(0, 0.90403146, 0.9040313, 1)
 polygon = PackedVector2Array(0, 54, 39, 0, 81, 54)
 uv = PackedVector2Array(-278, 54, -205, -53, -133, 68)
