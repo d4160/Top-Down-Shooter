@@ -10,10 +10,14 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 # Conecta la señal "area_entered" del propio Area2D a este script
 func _on_area_entered(area):
-	if area.name == "Jugador":
-		area.queue_free() # Destruye al jugador (Game Over simple)
-		queue_free()
-	elif "Bala" in area.name: # Si usas nombres o grupos para identificar balas
-		area.queue_free() # Destruye la bala
-		queue_free() # Destruye al enemigo
-		# Aquí sumarías puntos
+	# 1. ¿Me tocó una bala?
+	if area.is_in_group("balas"):
+		area.queue_free()  # Destruimos la bala
+		queue_free()       # Nos destruimos a nosotros (el enemigo)
+		# Aquí podrías poner: Global.puntos += 10
+		
+	# 2. ¿Me tocó el jugador?
+	elif area.is_in_group("jugador"):
+		area.queue_free()  # Destruimos al jugador
+		queue_free()       # Destruimos al enemigo
+		# Aquí podrías poner: get_tree().reload_current_scene() para reiniciar
