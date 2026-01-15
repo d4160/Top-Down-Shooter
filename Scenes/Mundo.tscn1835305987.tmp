@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfrcro2vn40y"]
+
+[ext_resource type="PackedScene" uid="uid://vy8n1sop6tg5" path="res://Scenes/Jugador.tscn" id="1_pe05s"]
+[ext_resource type="Script" path="res://Scripts/Mundo.gd" id="1_ubi47"]
+[ext_resource type="PackedScene" uid="uid://bwt65nhtvyxnu" path="res://Scenes/Enemigo.tscn" id="2_xywc0"]
+
+[node name="Mundo" type="Node2D"]
+script = ExtResource("1_ubi47")
+escena_enemigo = ExtResource("2_xywc0")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(270, 0)
+amount = 50
+lifetime = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(270, 1)
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color = Color(0.3375016, 0.55616844, 1, 1)
+
+[node name="TimerEnemigos" type="Timer" parent="."]
+autostart = true
+
+[node name="Jugador" parent="." instance=ExtResource("1_pe05s")]
+position = Vector2(204, 818)
