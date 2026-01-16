@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://caygu1r7kyvva" path="res://Scripts/jugador.gd" id="1_43k7d"]
 [ext_resource type="PackedScene" uid="uid://cku2jnc4swhwh" path="res://Scenes/Bala Jugador.tscn" id="2_na3lr"]
 [ext_resource type="Texture2D" uid="uid://dy1bmwa8qt5ph" path="res://Assets/nave_01.png" id="3_na3lr"]
-[ext_resource type="AudioStream" uid="uid://b7oit8ia4qhwy" path="res://Assets/Laser_blaster_sci-fi_#3-1768533325020.wav" id="4_es7oc"]
+[ext_resource type="AudioStream" uid="uid://b7oit8ia4qhwy" path="res://SFX/Laser_blaster_sci-fi_#3-1768533325020.wav" id="4_es7oc"]
 
 [sub_resource type="Animation" id="Animation_es7oc"]
 length = 0.001

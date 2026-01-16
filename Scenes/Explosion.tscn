@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtc8p4h6ao615"]
 
 [ext_resource type="Script" uid="uid://j2wq4it47oau" path="res://Scripts/Explosion.gd" id="1_mbc3v"]
-[ext_resource type="AudioStream" uid="uid://mwtnu32xqft5" path="res://Assets/Retro_explosion_#3-1768533483661.wav" id="2_ix64a"]
+[ext_resource type="AudioStream" uid="uid://mwtnu32xqft5" path="res://SFX/Retro_explosion_#3-1768533483661.wav" id="2_ix64a"]
 
 [sub_resource type="Gradient" id="Gradient_yp4o6"]
 offsets = PackedFloat32Array(0, 0.5371429, 1)
