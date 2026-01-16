@@ -5,6 +5,7 @@ signal morir()
 
 @export var velocidad = 200
 @export var salud = 3
+@export var explosion_scene : PackedScene
 
 @onready var health_bar = get_node_or_null("ProgressBar")
 
@@ -29,10 +30,20 @@ func _on_area_entered(area):
 			health_bar.value = salud
 		
 		if salud <= 0:
-			morir.emit()
-			queue_free()   # Nos destruimos solo si no queda salud
+			explotar_y_morir()
 		
 	# 2. ¿Me tocó el jugador?
 	elif area.is_in_group("jugador"):
-		morir.emit()
-		queue_free()       # Destruimos al enemigo
+		explotar_y_morir()
+
+func explotar_y_morir():
+	morir.emit()
+	if explosion_scene:
+		var boom = explosion_scene.instantiate()
+		boom.global_position = global_position	
+		get_tree().current_scene.add_child(boom)
+		boom.emitting = true
+	
+	# Busca la cámara activa y la sacude con fuerza 10
+	get_viewport().get_camera_2d().aplicar_temblor(10.0)
+	queue_free()

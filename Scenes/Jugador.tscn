@@ -1,15 +1,53 @@
-[gd_scene load_steps=4 format=3 uid="uid://vy8n1sop6tg5"]
+[gd_scene load_steps=8 format=3 uid="uid://vy8n1sop6tg5"]
 
 [ext_resource type="Script" uid="uid://caygu1r7kyvva" path="res://Scripts/jugador.gd" id="1_43k7d"]
 [ext_resource type="PackedScene" uid="uid://cku2jnc4swhwh" path="res://Scenes/Bala Jugador.tscn" id="2_na3lr"]
-[ext_resource type="Texture2D" uid="uid://dy1bmwa8qt5ph" path="res://Assets/nave_01-removebg-preview.png" id="3_na3lr"]
+[ext_resource type="Texture2D" uid="uid://dy1bmwa8qt5ph" path="res://Assets/nave_01.png" id="3_na3lr"]
+[ext_resource type="AudioStream" uid="uid://b7oit8ia4qhwy" path="res://Assets/Laser_blaster_sci-fi_#3-1768533325020.wav" id="4_es7oc"]
+
+[sub_resource type="Animation" id="Animation_es7oc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_na3lr"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 0.95), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e13yb"]
+_data = {
+&"RESET": SubResource("Animation_es7oc"),
+&"idle": SubResource("Animation_na3lr")
+}
 
 [node name="Jugador" type="Area2D" groups=["jugador"]]
 script = ExtResource("1_43k7d")
 escena_bala = ExtResource("2_na3lr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(35.000004, 12)
+position = Vector2(0.5, -9)
 scale = Vector2(0.166, 0.188)
 texture = ExtResource("3_na3lr")
 
@@ -20,12 +58,22 @@ polygon = PackedVector2Array(0, 54, 11, 23, 1, 1, 15, -16, 33, -35, 54, -16, 70,
 uv = PackedVector2Array(-278, 54, -205, -53, -133, 68)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(10, 44, 11, -19, 55, -18, 61, 44)
+position = Vector2(-34.500004, -21)
+polygon = PackedVector2Array(22, 39, 21, -2, 50, -3, 49, 40)
 
 [node name="Cañon" type="Marker2D" parent="."]
-position = Vector2(25, 3)
+position = Vector2(-9.500004, -18)
 
 [node name="Cañon2" type="Marker2D" parent="."]
-position = Vector2(44, 3)
+position = Vector2(9.499996, -18)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_e13yb")
+}
+autoplay = "idle"
+
+[node name="SonidoDisparo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_es7oc")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

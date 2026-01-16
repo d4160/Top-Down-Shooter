@@ -48,6 +48,8 @@ func disparar():
 		if bala2.has_method("set_direction"):
 			bala2.set_direction(Vector2.UP)
 		get_parent().add_child(bala2)
+		
+		$SonidoDisparo.play()
 
 func disparar_especial():
 	if escena_bala:

@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfrcro2vn40y"]
+[gd_scene load_steps=9 format=3 uid="uid://bfrcro2vn40y"]
 
 [ext_resource type="PackedScene" uid="uid://vy8n1sop6tg5" path="res://Scenes/Jugador.tscn" id="1_pe05s"]
 [ext_resource type="Script" uid="uid://elay56avgmta" path="res://Scripts/Mundo.gd" id="1_ubi47"]
 [ext_resource type="PackedScene" uid="uid://bwt65nhtvyxnu" path="res://Scenes/Enemigo 01.tscn" id="2_xywc0"]
 [ext_resource type="PackedScene" uid="uid://7qmwgp0msjin" path="res://Scenes/Jefe.tscn" id="3_v2lyq"]
 [ext_resource type="PackedScene" uid="uid://fwrpj82rbhll" path="res://Scenes/Enemigo 02.tscn" id="3_yag4v"]
-[ext_resource type="PackedScene" path="res://Scenes/HUD.tscn" id="4_hud"]
+[ext_resource type="PackedScene" uid="uid://b8x8x8x8x8x8x" path="res://Scenes/HUD.tscn" id="4_hud"]
+[ext_resource type="AudioStream" uid="uid://c7radxi4ebr1o" path="res://Assets/Celestial Siege (Choral Edition).mp3" id="7_dq4oj"]
+[ext_resource type="Script" uid="uid://ch3qblovh78kk" path="res://Scripts/CameraShake.gd" id="8_2hhwh"]
 
 [node name="Mundo" type="Node2D"]
 script = ExtResource("1_ubi47")
@@ -26,4 +28,12 @@ scale_amount_max = 3.0
 autostart = true
 
 [node name="Jugador" parent="." instance=ExtResource("1_pe05s")]
-position = Vector2(204, 818)
+position = Vector2(273, 917)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_dq4oj")
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="AudioStreamPlayer"]
+position = Vector2(267, 480)
+script = ExtResource("8_2hhwh")
